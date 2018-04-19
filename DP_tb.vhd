@@ -43,7 +43,7 @@ ARCHITECTURE behavior OF DP_tb IS
     PORT(
          clk : IN  std_logic;
          rst : IN  std_logic;
-         Address_Out : OUT  std_logic_vector(31 downto 0)
+         Alu_Out : OUT  std_logic_vector(31 downto 0)
         );
     END COMPONENT;
     
@@ -52,7 +52,7 @@ ARCHITECTURE behavior OF DP_tb IS
    signal clk : std_logic := '0';
 
  	--Outputs
-   signal Address_Out : std_logic_vector(31 downto 0);
+   signal Alu_Out : std_logic_vector(31 downto 0);
 
    -- Clock period definitions
    constant clk_period : time := 10 ns;
@@ -65,7 +65,7 @@ BEGIN
    uut: datapath PORT MAP (
           clk => clk,
           rst => rst,
-          Address_Out => Address_Out
+          Alu_Out => Alu_Out
         );
 
    -- Clock process definitions
@@ -88,10 +88,10 @@ BEGIN
 		wait for 100 ns;
 		rst<='0';
 		
-		wait for 100 ns;
-		rst<='1';
+		wait for 50 ns;
+		rst<='0';
       
-		wait for 100 ns;
+		wait for 50 ns;
 		rst<='0';
 		
       wait;
